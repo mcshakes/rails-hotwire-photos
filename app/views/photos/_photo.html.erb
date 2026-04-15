@@ -1,13 +1,19 @@
-<div id="<%= dom_id(photo) %>" style="border: 1px solid #ddd; padding: 12px; border-radius: 8px;">
-  <img src="<%= photo.image_url %>" alt="<%= photo.title %>" style="width: 100%; border-radius: 6px;">
+<div id="<%= dom_id(photo) %>" class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+  <img
+    src="<%= photo.image_url %>"
+    alt="<%= photo.title %>"
+    class="h-64 w-full object-cover"
+  >
 
-  <p style="margin-top: 8px;"><strong><%= photo.photographer %></strong></p>
+  <div class="p-4">
+    <p class="text-base font-semibold text-gray-900"><%= photo.photographer %></p>
 
-  <div style="display: flex; justify-content: space-between; align-items: center;">
-    <a href="<%= photo.source_url %>" target="_blank" rel="noopener">
-      <%= image_tag "icons/links.svg", width: 16 %>
-    </a>
+    <div class="mt-3 flex items-center justify-between">
+      <a href="<%= photo.source_url %>" target="_blank" rel="noopener" class="inline-flex items-center">
+        <%= image_tag "icons/links.svg", width: 18 %>
+      </a>
 
-    <%= render "likes/button", photo: photo %>
+      <%= render "likes/button", photo: photo %>
+    </div>
   </div>
 </div>

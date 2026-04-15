@@ -1,11 +1,17 @@
-<div style="max-width: 900px; margin: 40px auto; font-family: sans-serif;">
-  <h1>All Photos</h1>
+<div class="max-w-5xl mx-auto px-4 py-8">
+  <div class="flex items-center justify-between mb-6">
+    <div>
+      <h1 class="text-3xl font-bold">All Photos</h1>
+      <p class="text-sm text-gray-600 mt-1">Signed in as <%= current_user.email %></p>
+    </div>
 
-  <p>Signed in as <%= current_user.email %></p>
+    <%= button_to "Sign out",
+        destroy_user_session_path,
+        method: :delete,
+        class: "rounded-md border border-gray-300 px-4 py-2 text-sm hover:bg-gray-50" %>
+  </div>
 
-  <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
-
-  <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;">
+  <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
     <%= render @photos %>
   </div>
 </div>
